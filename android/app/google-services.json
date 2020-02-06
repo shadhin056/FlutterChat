@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "982295736723",
+    "firebase_url": "https://chat-056.firebaseio.com",
+    "project_id": "chat-056",
+    "storage_bucket": "chat-056.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982295736723:android:30bff147104cf3820b3866",
+        "android_client_info": {
+          "package_name": "com.shadhin.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982295736723-9mabksuncmha18j2ljet34ns4586gbav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAioNN6pMJrrjcfMlSu5I7lD4Q-AzTCZOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982295736723-9mabksuncmha18j2ljet34ns4586gbav.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
