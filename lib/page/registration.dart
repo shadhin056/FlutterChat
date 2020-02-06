@@ -29,7 +29,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+
               },
               decoration: InputDecoration(
                 hintText: 'Enter your email',
@@ -53,7 +53,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+
               },
               decoration: InputDecoration(
                 hintText: 'Enter yourpassword',
@@ -83,7 +83,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Implement registration functionality.
+
                   },
                   minWidth: 200.0,
                   height: 42.0,

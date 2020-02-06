@@ -29,7 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
               },
               decoration: InputDecoration(
                 hintText: 'Enter your email',
@@ -55,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+
               },
               decoration: InputDecoration(
                 hintText: 'Enter your password.',
@@ -87,7 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Implement login functionality.
                   },
                   minWidth: 200.0,
                   height: 42.0,
