@@ -1,3 +1,4 @@
+import 'package:chat/components/RoundButton.dart';
 import 'package:chat/page/login.dart';
 import 'package:chat/page/registration.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightGreenAccent.withOpacity(controller.value),
+      backgroundColor: Colors.greenAccent.withOpacity(controller.value),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -45,7 +46,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ),
                 Text(
-                  'Flash Chat',
+                  ' Chatting ',
                   style: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
@@ -56,45 +57,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
-            ),
+            RoundButton(title: "LogIn",color: Colors.white,onPressed:() {
+              Navigator.pushNamed(context, LoginScreen.id);
+            },),
+            RoundButton(title: "Registration",color: Colors.blue,onPressed:() {
+              Navigator.pushNamed(context, RegistrationScreen.id);
+            },),
           ],
         ),
       ),
     );
   }
 }
+
