@@ -1,15 +1,22 @@
 import 'package:chat/components/RoundButton.dart';
+import 'package:chat/page/chat.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
 class LoginScreen extends StatefulWidget {
-  static String id="login";
+  static String id = "login";
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,28 +40,37 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
-              onChanged: (value) {
-              },
-                decoration:kTextFieldDecoration.copyWith(hintText: "Enter your email")
-            ),
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: "Enter your email")),
             SizedBox(
               height: 8.0,
             ),
             TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
-              onChanged: (value) {
-
-              },
-                decoration:kTextFieldDecoration.copyWith(hintText: "Enter your password")
-            ),
+                onChanged: (value) {
+                  password = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: "Enter your password")),
             SizedBox(
               height: 24.0,
             ),
             RoundButton(
               title: "Login",
               color: Colors.blue,
-              onPressed: () {},
+              onPressed: () async {
+                try {
+                  final user = await _auth.signInWithEmailAndPassword(
+                      email: email, password: password);
+                  if (user != null) {
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  }
+                } catch (e) {}
+              },
             ),
           ],
         ),
