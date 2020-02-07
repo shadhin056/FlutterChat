@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 final _fireStore = Firestore.instance;
-
+FirebaseUser loggedInUser;
 class ChatScreen extends StatefulWidget {
   static String id = "chat";
 
@@ -14,7 +14,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final messageTextController =TextEditingController();
-  FirebaseUser loggedInUser;
+
   final _auth = FirebaseAuth.instance;
   String messageText;
 
@@ -124,19 +124,24 @@ class MessageStream extends StatelessWidget {
             ),
           );
         }
-        final messages = snapshot.data.documents;
+        final messages = snapshot.data.documents.reversed;
         List<MessageBubble> messagesBubbles = [];
         for (var message in messages) {
           final messageText = message.data["text"];
           final messageSender = message.data["sender"];
+          final currentUser=loggedInUser.email;
+
+
           final messageBubble = MessageBubble(
             sender: messageSender,
             text: messageText,
+            isMe:currentUser==messageSender,
           );
           messagesBubbles.add(messageBubble);
         }
         return Expanded(
           child: ListView(
+            reverse: true,
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: messagesBubbles,
           ),
@@ -147,10 +152,11 @@ class MessageStream extends StatelessWidget {
 }
 
 class MessageBubble extends StatelessWidget {
-  MessageBubble({this.sender, this.text});
+  MessageBubble({this.sender, this.text,this.isMe});
 
   final String sender;
   final String text;
+  final bool isMe;
 
   @override
   Widget build(BuildContext context) {
@@ -164,16 +170,16 @@ class MessageBubble extends StatelessWidget {
             style: TextStyle(fontSize: 12.0, color: Colors.black54),
           ),
           Material(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10) ),
             elevation: 2.0,
-            color: Colors.blueAccent,
+            color: isMe? Colors.blueAccent: Colors.white,
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
               child: Text(
                 text,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: isMe?Colors.white:Colors.black,
                   fontSize: 15.0,
                 ),
               ),
